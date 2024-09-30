@@ -1,0 +1,124 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Incluye Font Awesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Panel de Control</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Panel de Control</h1>
+        <div class="button-container">
+            <a asp-controller="Articulo" asp-action="Index" class="button articulo">
+    <i class="fas fa-box"></i> Artículo
+</a>
+<a asp-controller="Proveedor" asp-action="Index" class="button proveedor">
+    <i class="fas fa-truck"></i> Proveedor
+</a>
+<a asp-controller="Compra" asp-action="Index" class="button compra">
+    <i class="fas fa-shopping-cart"></i> Compra
+</a>
+<a asp-controller="Prestamo" asp-action="Index" class="button prestamo">
+    <i class="fas fa-hand-holding-usd"></i> Préstamo
+</a>
+<a asp-controller="ImagenArticulo" asp-action="Index" class="button imagen-articulo">
+    <i class="fas fa-image"></i> Imagen Artículo
+</a>
+<a asp-controller="Usuario" asp-action="Index" class="button usuarios">
+    <i class="fas fa-users"></i> Usuarios
+</a>
+
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 10px;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 30px 50px; /* Aumenta aún más el tamaño de los botones */
+        margin: 10px;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.5em; /* Aumenta el tamaño de la fuente */
+        width: 45%; /* Cada botón ocupa el 45% del ancho del contenedor */
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+        .button i {
+            margin-right: 10px;
+        }
+
+    .articulo {
+        background-color: #007bff; /* Azul */
+    }
+
+    .proveedor {
+        background-color: #28a745; /* Verde */
+    }
+
+    .compra {
+        background-color: #dc3545; /* Rojo */
+    }
+
+    .prestamo {
+        background-color: #ffc107; /* Amarillo */
+    }
+
+    .imagen-articulo {
+        background-color: #17a2b8; /* Cian */
+    }
+
+    .usuarios {
+        background-color: #6f42c1; /* Morado */
+    }
+
+    .button:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    .button:active {
+        transform: translateY(0);
+    }
+</style>
