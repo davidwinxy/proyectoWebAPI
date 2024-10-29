@@ -2,51 +2,86 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Xunit;
 
 namespace PruebasUI
 {
     public class HomeTest
     {
-        //Declaración del driver
+        // Declaración del driver
         IWebDriver driver;
-        //Declaración de la espera
+        // Declaración de la espera
         private WebDriverWait _wait;
 
         public HomeTest()
         {
-            //Se inicializa el driver con chrome
+            // Se inicializa el driver con Chrome
             driver = new ChromeDriver();
-            //Se inicializa la espera con la cantidad de segundos deseados
-            //En este ejemplo dejamos 10 segundos como espera máxima
+            // Se inicializa la espera con la cantidad de segundos deseados
             _wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
-
-
 
         [Fact]
         public void test()
         {
-            //Nos redirigimos a la página deseada, en este caso la de Nerdino
+            // Navegar a la página deseada
             driver.Navigate().GoToUrl("https://localhost:7088/");
-            //Maximizamos la ventana
+            // Maximizar la ventana
             driver.Manage().Window.Maximize();
-            //Buscamos el elemento por su id y una vez que lo encuentra da click
+
+            // Hacer clic en el botón de artículo
             _wait.Until(dvr => dvr.FindElement(By.Id("btn-articulo"))).Click();
-            //Esperamos medio segundo para poder alcanzar a ver que se haya realizado la operación
 #if DEBUG
-            Thread.Sleep(500);
+            Thread.Sleep(500); // Pausa para ver la operación (opcional)
 #endif
-            //Repetimos lo anterior con una pestaña diferente
+            // Regresar a la vista principal
             _wait.Until(dvr => dvr.FindElement(By.Id("LogoIndex"))).Click();
 #if DEBUG
-            Thread.Sleep(500);
+            Thread.Sleep(500); // Pausa para ver la operación (opcional)
 #endif
-            //Cerramos el driver
+
+            // Hacer clic en el botón de préstamo
+            _wait.Until(dvr => dvr.FindElement(By.Id("btn-prestamo"))).Click();
+#if DEBUG
+            Thread.Sleep(500); // Pausa para ver la operación (opcional)
+#endif
+            // Regresar a la vista principal
+            _wait.Until(dvr => dvr.FindElement(By.Id("LogoIndex"))).Click();
+#if DEBUG
+            Thread.Sleep(500); // Pausa para ver la operación (opcional)
+#endif
+
+            // Hacer clic en el botón de proveedor
+            _wait.Until(dvr => dvr.FindElement(By.Id("btn-proveedor"))).Click();
+#if DEBUG
+            Thread.Sleep(500); // Pausa para ver la operación (opcional)
+#endif
+            // Regresar a la vista principal
+            _wait.Until(dvr => dvr.FindElement(By.Id("LogoIndex"))).Click();
+#if DEBUG
+            Thread.Sleep(500); // Pausa para ver la operación (opcional)
+#endif
+
+            // Hacer clic en el botón de usuarios
+            _wait.Until(dvr => dvr.FindElement(By.Id("btn-usuarios"))).Click();
+#if DEBUG
+            Thread.Sleep(500); // Pausa para ver la operación (opcional)
+#endif
+            // Regresar a la vista principal
+            _wait.Until(dvr => dvr.FindElement(By.Id("LogoIndex"))).Click();
+#if DEBUG
+            Thread.Sleep(500); // Pausa para ver la operación (opcional)
+#endif
+            _wait.Until(dvr => dvr.FindElement(By.Id("btn-compra"))).Click();
+#if DEBUG
+            Thread.Sleep(500); // Pausa para ver la operación (opcional)
+#endif
+            _wait.Until(dvr => dvr.FindElement(By.Id("LogoIndex"))).Click();
+#if DEBUG
+            Thread.Sleep(500); // Pausa para ver la operación (opcional)
+#endif
+
+            // Cerrar el driver después de que las interacciones hayan terminado
             driver.Quit();
         }
     }
