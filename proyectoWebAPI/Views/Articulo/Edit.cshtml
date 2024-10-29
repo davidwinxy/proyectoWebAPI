@@ -13,38 +13,39 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <input type="hidden" asp-for="Id" class="form-control" />
+                <input type="hidden" asp-for="Id" class="form-control" id="ArticuloId" />
                 <span asp-validation-for="Id" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
+                <label asp-for="Nombre" class="control-label" id="ArticuloNombreLabel"></label>
+                <input asp-for="Nombre" class="form-control" id="ArticuloNombre" />
+                <span asp-validation-for="Nombre" class="text-danger" id="ArticuloNombreValidation"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" />
-                <span asp-validation-for="Descripcion" class="text-danger"></span>
+                <label asp-for="Descripcion" class="control-label" id="ArticuloDescripcionLabel"></label>
+                <input asp-for="Descripcion" class="form-control" id="ArticuloDescripcion" />
+                <span asp-validation-for="Descripcion" class="text-danger" id="ArticuloDescripcionValidation"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Categoria" class="control-label"></label>
-                <input asp-for="Categoria" class="form-control" />
-                <span asp-validation-for="Categoria" class="text-danger"></span>
+                <label asp-for="Categoria" class="control-label" id="ArticuloCategoriaLabel"></label>
+                <input asp-for="Categoria" class="form-control" id="ArticuloCategoria" />
+                <span asp-validation-for="Categoria" class="text-danger" id="ArticuloCategoriaValidation"></span>
             </div>
             <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Disponibilidad" /> @Html.DisplayNameFor(model => model.Disponibilidad)
+                <label class="form-check-label" id="ArticuloDisponibilidadLabel">
+                    <input class="form-check-input" asp-for="Disponibilidad" id="ArticuloDisponibilidad" /> 
+                    @Html.DisplayNameFor(model => model.Disponibilidad)
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" id="ArticuloSaveButton" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" id="ArticuloBackToList">Back to List</a>
 </div>
 
 @section Scripts {

@@ -1,10 +1,10 @@
 ﻿@model ProductosWEB.Models.Compra
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear";
 }
 
-<h1>Create</h1>
+<h1>Crear</h1>
 
 <h4>Compra</h4>
 <hr />
@@ -14,57 +14,57 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <input type="hidden" asp-for="Id" class="form-control" />
-                <span type="hidden" asp-validation-for="Id" class="text-danger"></span>
+                <span asp-validation-for="Id" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="numerodeFactura" class="control-label"></label>
-                <input asp-for="numerodeFactura" class="form-control" />
+            <div class="form-group" id="CompraNumeroFacturaGroup">
+                <label asp-for="numerodeFactura" class="control-label" id="CompraNumeroFacturaLabel"></label>
+                <input asp-for="numerodeFactura" class="form-control" id="CompraNumeroFactura" />
                 <span asp-validation-for="numerodeFactura" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="fecha" class="control-label"></label>
-                <input asp-for="fecha" class="form-control" />
+            <div class="form-group" id="CompraFechaGroup">
+                <label asp-for="fecha" class="control-label" id="CompraFechaLabel"></label>
+                <input asp-for="fecha" class="form-control" id="CompraFecha" />
                 <span asp-validation-for="fecha" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="precioUnitario" class="control-label"></label>
-                <input asp-for="precioUnitario" class="form-control" />
+            <div class="form-group" id="CompraPrecioUnitarioGroup">
+                <label asp-for="precioUnitario" class="control-label" id="CompraPrecioUnitarioLabel"></label>
+                <input asp-for="precioUnitario" class="form-control" id="CompraPrecioUnitario" />
                 <span asp-validation-for="precioUnitario" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="cantidad" class="control-label"></label>
-                <input asp-for="cantidad" class="form-control" />
+            <div class="form-group" id="CompraCantidadGroup">
+                <label asp-for="cantidad" class="control-label" id="CompraCantidadLabel"></label>
+                <input asp-for="cantidad" class="form-control" id="CompraCantidad" />
                 <span asp-validation-for="cantidad" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="subTotal" class="control-label"></label>
-                <input type="hidden" asp-for="subTotal" class="form-control" />
+            <div class="form-group" id="CompraSubTotalGroup">
+                <label asp-for="subTotal" class="control-label" id="CompraSubTotalLabel"></label>
+                <input type="hidden" asp-for="subTotal" class="form-control" id="CompraSubTotal" />
                 <span asp-validation-for="subTotal" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="iva" class="control-label"></label>
-                <input type="hidden" asp-for="iva" class="form-control" />
+            <div class="form-group" id="CompraIvaGroup">
+                <label asp-for="iva" class="control-label" id="CompraIvaLabel"></label>
+                <input type="hidden" asp-for="iva" class="form-control" id="CompraIva" />
                 <span asp-validation-for="iva" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="total" class="control-label"></label>
-                <input type="hidden" asp-for="total" class="form-control" />
+            <div class="form-group" id="CompraTotalGroup">
+                <label asp-for="total" class="control-label" id="CompraTotalLabel"></label>
+                <input type="hidden" asp-for="total" class="form-control" id="CompraTotal" />
                 <span asp-validation-for="total" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="idProveedor" class="control-label"></label>
-                <input asp-for="idProveedor" class="form-control" />
+            <div class="form-group" id="CompraIdProveedorGroup">
+                <label asp-for="idProveedor" class="control-label" id="CompraIdProveedorLabel"></label>
+                <input asp-for="idProveedor" class="form-control" id="CompraIdProveedor" />
                 <span asp-validation-for="idProveedor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn btn-primary" id="CompraCreateButton" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" id="CompraBackToListLink">Volver a la Lista</a>
 </div>
 
 @section Scripts {
