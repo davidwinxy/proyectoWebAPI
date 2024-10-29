@@ -7,7 +7,7 @@
 <h1>Lista de Proveedores</h1>
 
 <p>
-    <a class="btn btn-primary" asp-action="Create">Crear Nuevo Proveedor</a>
+    <a id="btnCreateProveedor" class="btn btn-primary" asp-action="Create">Crear Nuevo Proveedor</a>
 </p>
 
 <table class="table table-striped">
@@ -41,13 +41,13 @@
                 <td>@Html.DisplayFor(modelItem => item.telefono)</td>
                 <td>@Html.DisplayFor(modelItem => item.direccion)</td>
                 <td>
-                    <a id="ProveedorEdit_@item.Id" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
+                    <a id="ProveedorEdit" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
                         <i class="fas fa-edit"></i> Editar
-                    </a> |
-                    <a id="ProveedorDetails_@item.Id" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                    </a> 
+                    <a id="ProveedorDetails" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">
                         <i class="fas fa-info-circle"></i> Detalles
-                    </a> |
-                    <a id="ProveedorDelete_@item.Id" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                    </a> 
+                    <a id="ProveedorDelete" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
                         <i class="fas fa-trash"></i> Eliminar
                     </a>
                 </td>

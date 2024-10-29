@@ -13,56 +13,56 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div type="hidden" class="form-group">
-                <input type="hidden" asp-for="Id" class="form-control" />
+                <input type="hidden" asp-for="Id" class="form-control" id="ProveedorId" />
                 <span asp-validation-for="Id" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="nombre" class="control-label"></label>
-                <input asp-for="nombre" class="form-control" />
+                <input asp-for="nombre" class="form-control" id="ProveedorNombre" />
                 <span asp-validation-for="nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="apellido" class="control-label"></label>
-                <input asp-for="apellido" class="form-control" />
+                <input asp-for="apellido" class="form-control" id="ProveedorApellido" />
                 <span asp-validation-for="apellido" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="tipoDePersona" class="control-label"></label>
-                <input asp-for="tipoDePersona" class="form-control" />
+                <input asp-for="tipoDePersona" class="form-control" id="ProveedorTipoDePersona" />
                 <span asp-validation-for="tipoDePersona" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="dui" class="control-label"></label>
-                <input asp-for="dui" class="form-control" />
+                <input asp-for="dui" class="form-control" id="ProveedorDui" />
                 <span asp-validation-for="dui" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="nombreEmpresa" class="control-label"></label>
-                <input asp-for="nombreEmpresa" class="form-control" />
+                <input asp-for="nombreEmpresa" class="form-control" id="ProveedorNombreEmpresa" />
                 <span asp-validation-for="nombreEmpresa" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Nrc" class="control-label"></label>
-                <input asp-for="Nrc" class="form-control" />
+                <input asp-for="Nrc" class="form-control" id="ProveedorNrc" />
                 <span asp-validation-for="Nrc" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="contacto" class="control-label"></label>
-                <input asp-for="contacto" class="form-control" />
+                <input asp-for="contacto" class="form-control" id="ProveedorContacto" />
                 <span asp-validation-for="contacto" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="telefono" class="control-label"></label>
-                <input asp-for="telefono" class="form-control" />
+                <input asp-for="telefono" class="form-control" id="ProveedorTelefono" />
                 <span asp-validation-for="telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="direccion" class="control-label"></label>
-                <input asp-for="direccion" class="form-control" />
+                <input asp-for="direccion" class="form-control" id="ProveedorDireccion" />
                 <span asp-validation-for="direccion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" id="ProveedorCreate" />
+                <input type="submit" value="Create" class="btn btn-primary" id="ProveedorCreateButton" />
             </div>
         </form>
     </div>
@@ -73,5 +73,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -9,42 +9,85 @@ namespace PruebasUI
 {
     public class ArticuloTest
     {
-        // Declaración del driver
+        
         private IWebDriver driver;
-        // Declaración de la espera
         private WebDriverWait _wait;
 
         public ArticuloTest()
         {
-            // Se inicializa el driver con Chrome
             driver = new ChromeDriver();
-            // Se inicializa la espera con la cantidad de segundos deseados
             _wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
         [Fact]
         public void TestArticuloNavigation()
         {
-            // Navegar a la página deseada
             driver.Navigate().GoToUrl("https://localhost:7088/");
-            // Maximizar la ventana
             driver.Manage().Window.Maximize();
+            Thread.Sleep(2000); 
 
-            // Hacer clic en el botón de artículo
             _wait.Until(dvr => dvr.FindElement(By.Id("btn-articulo"))).Click();
-            Thread.Sleep(500); // Pausa para ver la operación (opcional)
+            Thread.Sleep(2000); 
 
-            // Hacer clic en el detalle del artículo
-            _wait.Until(dvr => dvr.FindElement(By.Id("Articulodetails"))).Click();
-            Thread.Sleep(500); // Pausa para ver la operación (opcional)
+            _wait.Until(dvr => dvr.FindElement(By.Id("ArticuloCreate"))).Click();
+            Thread.Sleep(2000); 
 
-            // Aquí puedes agregar más interacciones o verificaciones según lo necesites
-        }
+            var nombreInput = _wait.Until(dvr => dvr.FindElement(By.Id("ArticuloNombre")));
+            nombreInput.Clear();
+            nombreInput.SendKeys("Nombre del Artículo de Prueba");
+            Thread.Sleep(2000);
 
-        // Este método se llamará después de que se complete la prueba
-        public void Dispose()
-        {
-            // Cerrar el driver después de que las interacciones hayan terminado
+            var descripcionInput = _wait.Until(dvr => dvr.FindElement(By.Id("ArticuloDescripcion")));
+            descripcionInput.Clear();
+            descripcionInput.SendKeys("Descripción del Artículo de Prueba");
+            Thread.Sleep(2000);
+
+            var categoriaInput = _wait.Until(dvr => dvr.FindElement(By.Id("ArticuloCategoria")));
+            categoriaInput.Clear();
+            categoriaInput.SendKeys("Categoría de Prueba");
+            Thread.Sleep(2000); 
+
+            var disponibilidadCheckbox = _wait.Until(dvr => dvr.FindElement(By.Id("ArticuloDisponibilidad")));
+            if (!disponibilidadCheckbox.Selected)
+            {
+                disponibilidadCheckbox.Click();
+            }
+            Thread.Sleep(2000); 
+
+            var createButton = _wait.Until(dvr => dvr.FindElement(By.Id("ArticuloCreateButton")));
+            createButton.Click();
+            Thread.Sleep(2000); 
+
+            _wait.Until(dvr => dvr.FindElement(By.Id("ProveedorDetails"))).Click();
+            Thread.Sleep(2000); 
+
+            _wait.Until(dvr => dvr.FindElement(By.Id("ArticuloEditLink"))).Click();
+            Thread.Sleep(2000); 
+
+            var editNombreInput = _wait.Until(dvr => dvr.FindElement(By.Id("ArticuloNombre")));
+            editNombreInput.Clear();
+            editNombreInput.SendKeys("Nombre del Artículo Modificado");
+            Thread.Sleep(2000); 
+
+            var editDescripcionInput = _wait.Until(dvr => dvr.FindElement(By.Id("ArticuloDescripcion")));
+            editDescripcionInput.Clear();
+            editDescripcionInput.SendKeys("Descripción del Artículo Modificado");
+            Thread.Sleep(2000);
+
+            var saveButton = _wait.Until(dvr => dvr.FindElement(By.Id("ArticuloSaveButton"))); 
+            saveButton.Click();
+            Thread.Sleep(2000); 
+
+            _wait.Until(dvr => dvr.FindElement(By.Id("ArticuloDelete"))).Click();
+            Thread.Sleep(2000); 
+
+            _wait.Until(dvr => dvr.FindElement(By.Id("btnDelete"))).Click();
+            Thread.Sleep(500); 
+
+
+            _wait.Until(dvr => dvr.FindElement(By.Id("BackToList"))).Click();
+            Thread.Sleep(500); 
+          
             driver.Quit();
         }
     }
