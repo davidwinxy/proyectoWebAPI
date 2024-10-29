@@ -15,31 +15,26 @@ namespace proyectoWebAPI.Services
             _httpClient = httpClient;
         }
 
-        // Obtener todos los artículos
         public async Task<List<Articulo>> GetArticulosAsync()
         {
             return await _httpClient.GetFromJsonAsync<List<Articulo>>("api/Articulo");
         }
 
-        // Obtener un artículo por ID
         public async Task<Articulo> GetArticuloById(int id)
         {
             return await _httpClient.GetFromJsonAsync<Articulo>($"api/Articulo/{id}");
         }
 
-        // Crear un nuevo artículo
         public async Task<Articulo> CreateArticulo(Articulo articulo)
         {
             var response = await _httpClient.PostAsJsonAsync("api/Articulo", articulo);
 
-            // Verificar si la respuesta fue exitosa
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadFromJsonAsync<Articulo>();
             }
             else
             {
-                // Manejo de errores: podrías lanzar una excepción o devolver un valor nulo, según sea necesario
                 var errorContent = await response.Content.ReadAsStringAsync();
                 throw new Exception($"Error al crear proveedor: {response.StatusCode} - {errorContent}");
             }

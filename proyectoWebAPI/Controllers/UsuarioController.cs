@@ -75,10 +75,20 @@ namespace ProductosWEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int id, Usuario usuario)
         {
+            if (id != usuario.Id) // Verifica que el ID coincida
+            {
+                return BadRequest();
+            }
 
-            await _usuarioService.UpdateUsuario(usuario);
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                await _usuarioService.UpdateUsuario(usuario);
+                return RedirectToAction(nameof(Index));
+            }
 
+            return View(usuario); // Si el modelo no es válido, vuelve a mostrar el formulario
         }
+
+
     }
 }

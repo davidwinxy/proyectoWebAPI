@@ -16,8 +16,12 @@ public class UsuarioServices
         return await _httpClient.GetFromJsonAsync<List<Usuario>>("api/Usuario");
     }
 
-    public async Task<Usuario> GetUsuarioById(int id){
-        return await _httpClient.GetFromJsonAsync<Usuario>($"api/Usuario/{id}");
+    public async Task<Usuario> GetUsuarioById(int id)
+    {
+        // Asegúrate de que la URL es correcta
+        var response = await _httpClient.GetAsync($"api/Usuario/{id}");
+        response.EnsureSuccessStatusCode(); // Esto lanzará una excepción si el código de estado no es 2xx
+        return await response.Content.ReadFromJsonAsync<Usuario>();
     }
 
     public async Task<Usuario> CreateUsuario(Usuario usuario){
