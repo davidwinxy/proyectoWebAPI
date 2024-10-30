@@ -32,15 +32,15 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                    <td>@Html.DisplayFor(modelItem => item.numerodeFactura)</td>
-                    <td>@Html.DisplayFor(modelItem => item.fecha)</td>
-                    <td>@Html.DisplayFor(modelItem => item.precioUnitario)</td>
-                    <td>@Html.DisplayFor(modelItem => item.cantidad)</td>
-                    <td>@Html.DisplayFor(modelItem => item.subTotal)</td>
-                    <td>@Html.DisplayFor(modelItem => item.iva)</td>
-                    <td>@Html.DisplayFor(modelItem => item.total)</td>
-                    <td>@Html.DisplayFor(modelItem => item.idProveedor)</td>
+                    <td><span id="CompraId_@item.Id">@Html.DisplayFor(modelItem => item.Id)</span></td>
+                    <td><span id="CompraNumerodeFactura_@item.Id">@Html.DisplayFor(modelItem => item.numerodeFactura)</span></td>
+                    <td><span id="CompraFecha_@item.Id">@Html.DisplayFor(modelItem => item.fecha)</span></td>
+                    <td><span id="CompraPrecioUnitario_@item.Id">@Html.DisplayFor(modelItem => item.precioUnitario)</span></td>
+                    <td><span id="CompraCantidad_@item.Id">@Html.DisplayFor(modelItem => item.cantidad)</span></td>
+                    <td><span id="CompraSubTotal_@item.Id">@Html.DisplayFor(modelItem => item.subTotal)</span></td>
+                    <td><span id="CompraIva_@item.Id">@Html.DisplayFor(modelItem => item.iva)</span></td>
+                    <td><span id="CompraTotal_@item.Id">@Html.DisplayFor(modelItem => item.total)</span></td>
+                    <td><span id="CompraIdProveedor_@item.Id">@Html.DisplayFor(modelItem => item.idProveedor)</span></td>
                     <td>
                         <a id="CompraEdit_@item.Id" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
                             <i class="fas fa-edit"></i> Editar
