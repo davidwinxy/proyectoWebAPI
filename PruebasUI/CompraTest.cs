@@ -21,7 +21,7 @@ namespace PruebasUI
         [Fact]
         public void TestCompraCreation()
         {
-            driver.Navigate().GoToUrl("http://localhost:5117/");
+            driver.Navigate().GoToUrl("https://localhost:7088/");
             driver.Manage().Window.Maximize();
             Thread.Sleep(2000);
 
@@ -30,7 +30,7 @@ namespace PruebasUI
             Thread.Sleep(2000);
 
             // Proceso para crear una nueva compra
-            _wait.Until(dvr => dvr.FindElement(By.Id("btnCreateCompra"))).Click();
+            _wait.Until(dvr => dvr.FindElement(By.Id("CompraCreate"))).Click();
             Thread.Sleep(2000); 
 
             var numeroFacturaInput = _wait.Until(dvr => dvr.FindElement(By.Id("CompraNumeroFactura")));
@@ -73,6 +73,10 @@ namespace PruebasUI
             var editCantidadInput = _wait.Until(dvr => dvr.FindElement(By.Id("CompraCantidad")));
             editCantidadInput.Clear();
             editCantidadInput.SendKeys("15");
+            Thread.Sleep(500);
+
+            var proveedorSelect = new SelectElement(_wait.Until(dvr => dvr.FindElement(By.Id("CompraIdProveedor"))));
+            proveedorSelect.SelectByValue("1"); // Aquí seleccionamos el proveedor con Id 1
             Thread.Sleep(500);
 
             var saveButton = _wait.Until(dvr => dvr.FindElement(By.Id("CompraSaveButton")));

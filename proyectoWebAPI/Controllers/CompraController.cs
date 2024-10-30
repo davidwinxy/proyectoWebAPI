@@ -3,6 +3,7 @@ using ProductosWEB.Services;
 using ProductosWEB.Models; // Asegúrate de incluir el espacio de nombres correcto para Compra
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ProductosWebAPI.Controllers
 {
@@ -46,8 +47,23 @@ namespace ProductosWebAPI.Controllers
 
         public async Task<ActionResult> Create()
         {
+            var proveedores = await _compraService.GetProveedoresAsync();
+
+            // Verificar si proveedores está nulo o vacío
+            if (proveedores == null || !proveedores.Any())
+            {
+                ModelState.AddModelError("", "No se encontraron proveedores.");
+                return View(new Compra());
+            }
+
+            // Crear el SelectList usando la propiedad correcta
+            ViewBag.Proveedores = new SelectList(proveedores, "Id", "nombre"); // Cambia "Nombre" a "nombre"
+
             return View();
         }
+
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

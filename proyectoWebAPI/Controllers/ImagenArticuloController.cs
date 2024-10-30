@@ -15,14 +15,14 @@ namespace proyectoWebAPI.Controllers
             _imagenArticuloService = imagenArticuloService;
         }
 
-        // Acción para mostrar todas las imágenes de los artículos
+        [HttpGet] // GET para obtener todas las imágenes
         public async Task<ActionResult> Index()
         {
             var imagenes = await _imagenArticuloService.GetArticulosAsync();
-            return View(imagenes); // Asegúrate de tener una vista correspondiente
+            return View(imagenes);
         }
 
-        // Acción para ver detalles de una imagen específica
+        [HttpGet] // GET para obtener detalles de una imagen específica
         public async Task<ActionResult> Details(int id)
         {
             var imagen = await _imagenArticuloService.GetArticuloById(id);
@@ -30,10 +30,10 @@ namespace proyectoWebAPI.Controllers
             {
                 return NotFound();
             }
-            return View(imagen); // Asegúrate de tener una vista correspondiente para los detalles
+            return View(imagen);
         }
 
-        // Acción para mostrar el formulario de eliminación
+        [HttpGet] // GET para mostrar el formulario de eliminación
         public async Task<ActionResult> Delete(int id)
         {
             var imagen = await _imagenArticuloService.GetArticuloById(id);
@@ -41,17 +41,16 @@ namespace proyectoWebAPI.Controllers
             {
                 return NotFound();
             }
-            return View(imagen); // Asegúrate de tener una vista de confirmación de eliminación
+            return View(imagen);
         }
 
-        // Acción para mostrar el formulario de creación
+        [HttpGet] // GET para mostrar el formulario de creación
         public async Task<ActionResult> Create()
         {
-            return View(); // Asegúrate de tener una vista para crear imágenes
+            return View();
         }
 
-        // Acción para manejar la creación de una nueva imagen
-        [HttpPost]
+        [HttpPost] // POST para manejar la creación de una nueva imagen
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(int articuloId, IFormFile file)
         {
@@ -60,15 +59,15 @@ namespace proyectoWebAPI.Controllers
                 var result = await _imagenArticuloService.UploadImagenAsync(articuloId, file);
                 if (result)
                 {
-                    return RedirectToAction(nameof(Index)); // Redirige a la lista de imágenes
+                    return RedirectToAction(nameof(Index));
                 }
             }
 
-            ModelState.AddModelError("", "Error al subir la imagen."); // Agregar un error al modelo si la carga falla
-            return View(); // Volver a mostrar el formulario de carga
+            ModelState.AddModelError("", "Error al subir la imagen.");
+            return View();
         }
 
-        // Acción para mostrar el formulario de edición
+        [HttpGet] // GET para mostrar el formulario de edición
         public async Task<ActionResult> Edit(int id)
         {
             var imagen = await _imagenArticuloService.GetArticuloById(id);
@@ -76,18 +75,15 @@ namespace proyectoWebAPI.Controllers
             {
                 return NotFound();
             }
-            return View(imagen); // Asegúrate de tener una vista para editar imágenes
+            return View(imagen);
         }
 
-        // Acción para manejar la edición de una imagen existente
-        [HttpPost]
+        [HttpPost] // POST para manejar la edición de una imagen existente
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int id, ImagenArticulo imagen)
         {
-            // Aquí iría la lógica para actualizar la imagen en el servidor (si es necesario)
-            // Esta parte puede requerir un método adicional en el servicio si planeas actualizar metadatos de la imagen
-
-            return RedirectToAction(nameof(Index)); // Redirige a la lista de imágenes
+            // Aquí va la lógica de actualización de la imagen
+            return RedirectToAction(nameof(Index));
         }
     }
 }

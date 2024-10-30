@@ -45,5 +45,22 @@ namespace ProductosWEB.Services
         {
             await _httpClient.DeleteAsync($"api/Compra/{id}");
         }
+
+
+        public async Task<List<Proveedor>> GetProveedoresAsync()
+        {
+            try
+            {
+                var proveedores = await _httpClient.GetFromJsonAsync<List<Proveedor>>("api/Proveedor");
+                return proveedores ?? new List<Proveedor>(); // Asegúrate de devolver una lista vacía si es null
+            }
+            catch (Exception ex)
+            {
+                // Maneja el error, quizás logueándolo
+                return new List<Proveedor>(); // Devolver una lista vacía en caso de error
+            }
+        }
+
+
     }
 }
